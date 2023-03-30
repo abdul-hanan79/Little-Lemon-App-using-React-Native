@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-
+import 'react-native-gesture-handler';
 import LittleLemonHeader from './components/LittleLemonHeader';
 import LittleLemonFooter from './components/LittleLemonFooter';
 import WelcomeScreen from './components/WelcomeScreen';
@@ -11,7 +11,7 @@ import MenuScreen from './components/MenuScreen';
 import { Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-
+import { createDrawerNavigator } from '@react-navigation/drawer';
 // code for stack navigation
 // const Stack = createStackNavigator();
 // function LogoTitle(){
@@ -28,7 +28,11 @@ import { Ionicons } from '@expo/vector-icons';
 // }
 
 // code for tab navigation
-const Tab = createBottomTabNavigator()
+// const Tab = createBottomTabNavigator()
+
+// code for drawer navigation
+
+const Drawer=createDrawerNavigator()
 export default function App() {
   return (
     <>
@@ -51,7 +55,7 @@ export default function App() {
 
       </NavigationContainer> */}
       {/* // code for tab navigation */}
-      <NavigationContainer>
+      {/* <NavigationContainer>
         <Tab.Navigator
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
@@ -73,6 +77,25 @@ export default function App() {
           <Tab.Screen name="Welcome" component={WelcomeScreen} />
 
         </Tab.Navigator>
+
+      </NavigationContainer> */}
+
+      {/* Code for drawer navigation */}
+      <NavigationContainer>
+        <View style={styles.container}>
+          <LittleLemonHeader />
+          <Drawer.Navigator initialRouteName="Login" screenOptions={{
+            headerStyle: { backgroundColor: '#333333' }, headerTintColor: '#fff', headerTitleStyle: {
+              fontSize: 25,
+              fontWeight: 'bold'
+            }
+          }} useLegacyImplementation>
+            <Drawer.Screen name="Welcome" component={WelcomeScreen} />
+            <Drawer.Screen name="Login" component={LoginScreen} />
+            <Drawer.Screen name="Menu" component={MenuScreen} options={{ title: "MenuScreen", headerTitle: (props) => <LogoTitle {...props} /> }} />
+          </Drawer.Navigator>
+          <LittleLemonFooter />
+        </View>
 
       </NavigationContainer>
     </>
