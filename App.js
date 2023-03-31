@@ -11,7 +11,8 @@ import MenuScreen from './components/MenuScreen';
 import { Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import RootNavigator from './navigators/RootNavigator';
+// import { createDrawerNavigator } from '@react-navigation/drawer';
 // code for stack navigation
 // const Stack = createStackNavigator();
 // function LogoTitle(){
@@ -32,7 +33,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 // code for drawer navigation
 
-const Drawer=createDrawerNavigator()
+// const Drawer = createDrawerNavigator()
 export default function App() {
   return (
     <>
@@ -82,7 +83,7 @@ export default function App() {
 
       {/* Code for drawer navigation */}
       <NavigationContainer>
-        <View style={styles.container}>
+        {/* <View style={styles.container}>
           <LittleLemonHeader />
           <Drawer.Navigator initialRouteName="Login" screenOptions={{
             headerStyle: { backgroundColor: '#333333' }, headerTintColor: '#fff', headerTitleStyle: {
@@ -95,8 +96,8 @@ export default function App() {
             <Drawer.Screen name="Menu" component={MenuScreen} options={{ title: "MenuScreen", headerTitle: (props) => <LogoTitle {...props} /> }} />
           </Drawer.Navigator>
           <LittleLemonFooter />
-        </View>
-
+        </View> */}
+        <RootNavigator />
       </NavigationContainer>
     </>
   );

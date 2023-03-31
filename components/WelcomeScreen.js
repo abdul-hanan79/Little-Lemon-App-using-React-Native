@@ -1,66 +1,51 @@
+import * as React from 'react';
 import { Pressable } from 'react-native';
-import { ScrollView, View, Text, StyleSheet, Image } from 'react-native';
+import { StyleSheet, View, Image, Text } from 'react-native';
 
-export default function WelcomeScreen({ navigation }) {
+const WelcomeScreen = ({ navigation }) => {
+  // Add welcome screen code here.
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.headerWrapper}>
-        <Image
-          style={styles.image}
-          source={require('../img/logo.png')}
-          resizeMode="cover"
-          accessible={true}
-          accessibilityLabel={'Little Lemon Logo'}
-        />
 
-        <Text style={styles.headerText}>Little Lemon</Text>
-      </View>
-      <Text style={styles.regularText}>
-        Little Lemon is a charming neighborhood bistro that serves simple food
-        and classic cocktails in a lively but casual environment. We would love
-        to hear your experience with us!
-      </Text>
-      <Pressable onPress={() => navigation.navigate('Menu')}>
-        <Text style={styles.buttonText}>View Menu</Text>
+    <View style={styles.container}>
+      <Image source={require('../assets/little-lemon-logo.png')}
+        style={{
+          height: 400,
+          width: 300,
+          resizeMode: 'contain',
+          alignSelf: 'center'
+        }}
+      />
+      <Text style={styles.text}>Little Lemon, your local Mediterranean Bistro</Text>
+
+      <Pressable onPress={() => { navigation.navigate('Subscribe') }} >
+        <Text style={styles.btn}>Newsletters</Text>
       </Pressable>
-    </ScrollView>
-  );
-}
+    </View>
 
+  );
+};
 const styles = StyleSheet.create({
   container: {
+
     flex: 1,
-    backgroundColor: "#333333"
-  },
-  headerWrapper: {
-    flexDirection: 'row',
     justifyContent: 'center',
-    margin: 10,
+    alignItems: 'center',
+    gap:10,
   },
-  headerText: {
-    paddingRight: 10,
-    paddingLeft: 20,
-    paddingTop: 30,
-    paddingBottom: 10,
-    fontSize: 30,
-    color: '#EDEFEE',
-    textAlign: 'center',
+  text: {
+    color: 'black',
+    fontSize: '16px',
+    fontWeight: 'bold'
   },
-  regularText: {
-    fontSize: 24,
-    padding: 20,
-    marginVertical: 8,
-    color: '#EDEFEE',
-    textAlign: 'center',
-  },
-  image: {
-    width: 100,
-    height: 100,
-    borderRadius: 20,
-  },
-  buttonText:{
-    color:'white'
+  btn: {
+    backgroundColor: 'green',
+    color: "white",
+    fontSize: '16px',
+    paddingTop: 12,
+    paddingBottom: 12,
+    paddingLeft: 16,
+    paddingRight: 16,
+    borderRadius: 12
   }
-});
-
-
+})
+export default WelcomeScreen;
